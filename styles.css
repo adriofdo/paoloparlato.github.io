@@ -1,0 +1,66 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-image: url('images/header-background.jpg'); /* Add a background image to your header */
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    padding: 5em 1em;
+}
+
+nav {
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    padding: 0.5em;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 1em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.slideshow-container {
+    max-width: 700px;
+    margin: 10 auto;
+    overflow: hidden;
+}
+
+/* Style the checkbox and hide the email initially */
+#paolopec-toggle:checked + #paolopec {
+    display: inline;
+  }
+  
+
+
+.mySlides {
+    display: none;
+}
+
+img {
+    width: 50%;
+}
+
+/* Add styles for your footer, dots, etc. */
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position:static;
+    bottom: 0;
+    width: 100%;
+}
