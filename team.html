@@ -3,9 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nome dello Studio Legale - Il Nostro Team</title>
+  <title>Nome dello Studio Legale - Servizi</title>
+
+  <!-- Bootstrap & Font Awesome -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        referrerpolicy="no-referrer" />
+
+  <!-- Your shared stylesheet -->
   <link rel="stylesheet" href="styles.css">
+
   <style>
     :root {
       --bg-dark: #0b0f1a;
@@ -14,6 +22,7 @@
       --text-light: #eaeef5;
       --muted: #a0a7b9;
     }
+
     /* Light mode variables */
     body.light-mode {
       --bg-dark: #ffffff;
@@ -30,17 +39,91 @@
       scroll-behavior: smooth;
       transition: background .4s ease, color .4s ease;
     }
+
     header {
-      background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('home1.jpg') center/cover no-repeat;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('home2.jpg') center/cover no-repeat;
       text-align: center;
       padding: 4rem 1rem;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     header h1 { font-weight: 700; text-shadow: 0 6px 25px rgba(0,0,0,0.45); }
+
+    /* Navbar */
     .navbar { background: rgba(10,14,25,0.8); backdrop-filter: blur(8px); transition: background .4s ease; }
     body.light-mode .navbar { background: rgba(255,255,255,.85); }
     .navbar .nav-link { color: var(--text-light)!important; font-weight: 500; padding: .8rem 1rem; transition: .2s; }
     .navbar .nav-link:hover { color: var(--accent)!important; }
+
+    /* ✅ Hamburger icon + border (DARK theme) */
+    .navbar-dark .navbar-toggler { border-color: rgba(255,255,255,.5); }
+    .navbar-dark .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* ✅ Hamburger icon + border (LIGHT theme) */
+    body.light-mode .navbar-dark .navbar-toggler { border-color: rgba(0,0,0,.4); }
+    body.light-mode .navbar-dark .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0,0,0,0.85)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* Services */
+    section.container { padding: 4rem 0; }
+    h2 { color: var(--accent); font-weight: 700; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.3);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 60px rgba(0,0,0,.4); }
+    .card-title { color: var(--accent); font-weight: 600; }
+
+    /* Tiny icon pill inside cards */
+    .service-icon {
+      width: 56px; height: 56px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--accent);
+      color: #000;
+      border-radius: 50%;
+      margin-bottom: .75rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+      font-size: 1.25rem;
+    }
+
+    /* Process strip (fills the blank space) */
+    .process { padding: 2.5rem 0 4rem; }
+    .step {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      height: 100%;
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+    }
+    .step .circle {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--accent); color: #000;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: .75rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,.25);
+    }
+    .step h6 { margin: 0; font-weight: 700; }
+    .step small { color: var(--muted); }
+
+    /* Footer / cookie bar */
+    footer { background: #090d14; border-top: 1px solid rgba(255,255,255,.08); padding: 2rem 1rem 5rem; text-align:center; color: var(--muted); font-size:.9rem; }
+    footer a { color: var(--accent); }
+
+    .cookie-bar {
+      position: fixed; bottom: 0; left: 0; width: 100%;
+      background: #11141f; color: var(--text-light);
+      padding: .75rem 1rem; text-align: center; font-size: .9rem;
+      border-top: 1px solid rgba(255,255,255,.1); z-index: 9999;
+    }
+    .cookie-bar a { color: var(--accent); text-decoration: underline; }
 
     /* Theme toggle button */
     .theme-toggle{
@@ -48,68 +131,15 @@
       background: var(--accent); color: #000; border: none;
       border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem;
       cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.3);
-      z-index: 10000; transition: transform .2s;
+      z-index: 10000; transition: background .3s, transform .2s;
     }
     .theme-toggle:hover{ transform: scale(1.05); }
-
-    /* Team grid equalize */
-    .team-row .col { display: flex; }   /* equal height columns */
-    .team-member {
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 18px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.3);
-      padding: 2.25rem 1.5rem 1.5rem;   /* extra top padding so avatars never touch the edge */
-      transition: transform .25s ease, box-shadow .25s ease;
-      width: 100%;
-      min-height: 380px;                /* same block height */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .team-member:hover { transform: translateY(-4px); box-shadow: 0 18px 60px rgba(0,0,0,.4); }
-    .team-member img {
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      width: 110px;                     /* smaller circle */
-      height: 110px;                    /* smaller circle */
-      object-fit: cover;
-      object-position: center;
-      margin-bottom: .9rem;
-    }
-    .team-member h5 { color: var(--accent); font-weight: 600; margin-bottom: .25rem; }
-    .team-member h6 { margin-bottom: .5rem; }
-    .team-member p  { margin-top: auto; } /* keeps PEC aligned at bottom */
-
-    footer {
-      background: #090d14;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 2rem 1rem 5rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: background .4s ease;
-    }
-    body.light-mode footer { background: #e9e9ef; color: #555; }
-    footer a { color: var(--accent); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* Cookie info bar */
-    .cookie-bar {
-      position: fixed; bottom: 0; left: 0; width: 100%;
-      background: #11141f; color: var(--text-light);
-      padding: 0.75rem 1rem; text-align: center; font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.1); z-index: 9999;
-    }
-    body.light-mode .cookie-bar { background: #fafafa; color: #222; border-top: 1px solid #ccc; }
-    .cookie-bar a { color: var(--accent); text-decoration: underline; }
 
     @keyframes fadeUp { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
     .fade-up { opacity:0; animation: fadeUp .8s ease forwards; }
   </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 
   <!-- Theme Toggle -->
   <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">☀️</button>
@@ -130,75 +160,74 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link h5" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link h5" href="about.html">Chi Siamo</a></li>
-          <li class="nav-item"><a class="nav-link h5" href="services.html">Servizi</a></li>
-          <li class="nav-item active"><a class="nav-link h5" href="team.html">Il Nostro Team</a></li>
+          <li class="nav-item active"><a class="nav-link h5" href="services.html">Servizi</a></li>
+          <li class="nav-item"><a class="nav-link h5" href="team.html">Il Nostro Team</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Team Section -->
-  <div class="container py-5">
-    <div class="text-center mb-5">
-      <h3 class="mb-3" style="color:var(--accent); font-weight:700;">IL NOSTRO TEAM</h3>
+  <!-- Services Section -->
+  <section class="container">
+    <h2 class="text-center mb-5">I Nostri Servizi</h2>
+    <div class="row">
+      <div class="col-md-6 fade-up">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <div class="service-icon"><i class="fas fa-gavel" aria-hidden="true"></i></div>
+            <h5 class="card-title">Consulenza Legale</h5>
+            <p class="card-text">Offriamo consulenza legale in diverse aree, fornendo assistenza e supporto legale personalizzato.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 fade-up">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <div class="service-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
+            <h5 class="card-title">Risoluzione Dispute</h5>
+            <p class="card-text">Aiutiamo a risolvere dispute legali in modo efficace e favorevole ai nostri clienti.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Add more service cards as needed -->
     </div>
+  </section>
 
-    <div class="row team-row text-center">
-      <div class="col col-lg-3 col-md-6 mb-4">
-        <div class="team-member">
-          <img src="clipart1.jpg" alt="Avv Paolo Parlato">
-          <h5>Avv Paolo Parlato</h5>
-          <h6>esperto in diritto civile</h6>
-          <p><strong><a href="mailto:paoloparlato@avvocatinapoli.legalmail.it">PEC:</a></strong></p>
+  <!-- Process (fills blank space with icons/steps) -->
+  <section class="process">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-6 col-md-3 mb-4">
+          <div class="step h-100">
+            <div class="circle"><i class="fas fa-comments" aria-hidden="true"></i></div>
+            <h6>Consulto</h6>
+            <small>primo contatto</small>
+          </div>
         </div>
-      </div>
-
-      <div class="col col-lg-3 col-md-6 mb-4">
-        <div class="team-member">
-          <img src="clipart1.jpg" alt="Avv Lucio Parlato">
-          <h5>Avv Lucio Parlato</h5>
-          <h6>esperto in diritto bancario e societario</h6>
-          <p><strong><a href="mailto:lucioparlato@avvocatinapoli.legalmail.it">PEC:</a></strong></p>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="step h-100">
+            <div class="circle"><i class="fas fa-file-signature" aria-hidden="true"></i></div>
+            <h6>Strategia</h6>
+            <small>analisi & piano</small>
+          </div>
         </div>
-      </div>
-
-      <div class="col col-lg-3 col-md-6 mb-4">
-        <div class="team-member">
-          <img src="clipart1.jpg" alt="Avv Francesco Giuseppe D’ Angelo">
-          <h5>Avv Francesco Giuseppe D’ Angelo</h5>
-          <h6>esperto in procedura esecutiva</h6>
-          <p><strong><a href="mailto:francescogiuseppedangelo@avvocatinapoli.legalmail.it">PEC:</a></strong></p>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="step h-100">
+            <div class="circle"><i class="fas fa-balance-scale" aria-hidden="true"></i></div>
+            <h6>Azione</h6>
+            <small>tutela legale</small>
+          </div>
         </div>
-      </div>
-
-      <div class="col col-lg-3 col-md-6 mb-4">
-        <div class="team-member">
-          <img src="clipart2.jpg" alt="Avv Valeria Lieto">
-          <h5>Avv Valeria Lieto</h5>
-          <h6>esperta in diritto del lavoro</h6>
-          <p><strong><a href="mailto:valerialieto@avvocatinapoli.legalmail.it">PEC:</a></strong></p>
-        </div>
-      </div>
-
-      <div class="col col-lg-3 col-md-6 mb-4">
-        <div class="team-member">
-          <img src="clipart2.jpg" alt="Dottoressa Giorgia Parlato">
-          <h5>Dottoressa Giorgia Parlato</h5>
-          <h6>specialista in diritto civile e materie di scienze politiche</h6>
-          <p><strong><a href="mailto:giorgia.parlato96@gmail.com">PEC:</a></strong></p>
-        </div>
-      </div>
-
-      <div class="col col-lg-3 col-md-6 mb-4">
-        <div class="team-member">
-          <img src="clipart1.jpg" alt="Avv Luigi Arpaia">
-          <h5>Avv Luigi Arpaia</h5>
-          <h6>esperto in diritto successorio</h6>
-          <p><strong><a href="mailto:luigiarpaia@avvocatinapoli.legalmail.it">PEC:</a></strong></p>
+        <div class="col-6 col-md-3 mb-4">
+          <div class="step h-100">
+            <div class="circle"><i class="fas fa-award" aria-hidden="true"></i></div>
+            <h6>Esito</h6>
+            <small>risultati</small>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -208,22 +237,22 @@
 
   <!-- Cookie info bar -->
   <div class="cookie-bar">
-    Questo sito non utilizza cookie né raccoglie dati personali. 
+    Questo sito non utilizza cookie né raccoglie dati personali.
     Consulta la <a href="privacy.html">Privacy Policy</a>.
   </div>
 
   <!-- Theme Toggle Script -->
   <script>
-    const toggleButton = document.getElementById('theme-toggle');
+    const btn = document.getElementById('theme-toggle');
     const saved = localStorage.getItem('theme');
     if (saved === 'light') {
       document.body.classList.add('light-mode');
-      toggleButton.textContent = '🌙';
+      btn.textContent = '🌙';
     }
-    toggleButton.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
       const isLight = document.body.classList.contains('light-mode');
-      toggleButton.textContent = isLight ? '🌙' : '☀️';
+      btn.textContent = isLight ? '🌙' : '☀️';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
   </script>

@@ -14,175 +14,102 @@
       --muted: #a0a7b9;
     }
 
-    /* 🌙 Dark Theme */
-    body {
-      background: linear-gradient(180deg, var(--bg-dark), var(--bg-light));
+    /* DARK THEME */
+    body{
+      background: linear-gradient(180deg,var(--bg-dark),var(--bg-light));
       color: var(--text-light);
-      font-family: 'Poppins', system-ui, sans-serif;
+      font-family: 'Poppins',system-ui,sans-serif;
       scroll-behavior: smooth;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background .3s,color .3s;
     }
 
-    header {
-      background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('home1.jpg') center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      padding: 5rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    header{
+      background: linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,.6)),url('home1.jpg') center/cover no-repeat;
+      color:#fff; text-align:center; padding:5rem 1rem;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    header h1{font-weight:700; letter-spacing:.8px; text-shadow:0 6px 25px rgba(0,0,0,.45);}
+
+    /* NAVBAR */
+    .navbar{background:rgba(10,14,25,.85); backdrop-filter: blur(8px); transition: background .3s;}
+    .navbar .nav-link{color:var(--text-light)!important; font-weight:500; padding:.8rem 1rem; transition:.2s;}
+    .navbar .nav-link:hover{color:var(--accent)!important;}
+
+    /* ✅ Proper hamburger icon (white) */
+    .navbar-dark .navbar-toggler{ border-color: rgba(255,255,255,.5); }
+    .navbar-dark .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
 
-    header h1 {
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-shadow: 0 6px 25px rgba(0,0,0,0.45);
+    section{padding:4rem 0;}
+    .carousel-item img{object-fit:cover; height:60vh; border-radius:6px;}
+
+    .contact-section{
+      background: linear-gradient(180deg,#121622,#0a0e17);
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--text-light);
+      transition: background .3s,color .3s;
     }
 
-    .navbar {
-      background: rgba(10,14,25,0.8);
-      backdrop-filter: blur(8px);
-      transition: background 0.3s ease;
+    footer{
+      background:#090d14; border-top:1px solid rgba(255,255,255,.08);
+      padding:2rem 1rem 5rem; text-align:center; color:var(--muted); font-size:.9rem;
+      transition: background .3s;
+    }
+    footer a{color:var(--accent); text-decoration:none;} footer a:hover{text-decoration:underline;}
+
+    /* COOKIE BAR */
+    .cookie-bar{
+      position:fixed; left:0; bottom:0; width:100%;
+      background:#11141f; color:var(--text-light);
+      padding:.75rem 1rem; text-align:center; font-size:.9rem;
+      border-top:1px solid rgba(255,255,255,.1); z-index:9999;
+      transition: background .3s,color .3s;
+    }
+    .cookie-bar a{color:var(--accent); text-decoration:underline;}
+
+    @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+    .fade-up{opacity:0; animation:fadeUp .8s ease forwards;}
+
+    /* LIGHT THEME */
+    body.light-mode{ background:linear-gradient(180deg,#f9f9fb,#ffffff); color:#222; }
+    body.light-mode header{
+      background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,.7)),url('home1.jpg') center/cover no-repeat;
+      color:#000;
+    }
+    body.light-mode .navbar{ background:rgba(255,255,255,.9); }
+    body.light-mode .navbar .nav-link{ color:#222!important; }
+    body.light-mode .navbar .nav-link:hover{ color:var(--accent)!important; }
+
+    /* ✅ Proper hamburger icon in LIGHT mode (black) */
+    body.light-mode .navbar-dark .navbar-toggler{ border-color: rgba(0,0,0,.4); }
+    body.light-mode .navbar-dark .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0,0,0,0.85)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
 
-    .navbar .nav-link {
-      color: var(--text-light) !important;
-      font-weight: 500;
-      padding: 0.8rem 1rem;
-      transition: all 0.2s ease;
-    }
+    body.light-mode .contact-section{ background:#f5f5f5; color:#222; border-top:1px solid #ccc; }
+    body.light-mode footer{ background:#f1f1f1; color:#444; }
+    body.light-mode .cookie-bar{ background:#f0f0f0; color:#222; border-top:1px solid #ccc; }
 
-    .navbar .nav-link:hover {
-      color: var(--accent) !important;
-    }
+    /* Scrollbar (optional) */
+    ::-webkit-scrollbar{ width:10px; }
+    ::-webkit-scrollbar-track{ background:#0b0f1a; }
+    ::-webkit-scrollbar-thumb{ background:#c9a45b; border-radius:6px; }
+    body.light-mode ::-webkit-scrollbar-track{ background:#eaeef5; }
+    body.light-mode ::-webkit-scrollbar-thumb{ background:#222; }
 
-    section {
-      padding: 4rem 0;
+    /* Toggle button */
+    .theme-toggle{
+      position:fixed; top:1rem; right:1rem;
+      background:var(--accent); color:var(--bg-dark);
+      border:none; border-radius:50%; width:42px; height:42px; font-size:1.2rem;
+      cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.3); z-index:9999; transition:transform .2s;
     }
-
-    .carousel-item img {
-      object-fit: cover;
-      height: 60vh;
-      border-radius: 6px;
-    }
-
-    .contact-section {
-      background: linear-gradient(180deg, #121622, #0a0e17);
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    footer {
-      background: #090d14;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 2rem 1rem 5rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: background 0.3s ease;
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* 🍪 Cookie info bar */
-    .cookie-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #11141f;
-      color: var(--text-light);
-      padding: 0.75rem 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      z-index: 9999;
-      transition: background 0.3s ease;
-    }
-
-    .cookie-bar a {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    /* ✨ Fade-up animation */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-up {
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    /* ☀️ Light Mode Overrides */
-    body.light-mode {
-      background: linear-gradient(180deg, #f9f9fb, #ffffff);
-      color: #222;
-    }
-
-    body.light-mode header {
-      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.7)), url('home1.jpg') center/cover no-repeat;
-      color: #000;
-    }
-
-    body.light-mode .navbar {
-      background: rgba(255,255,255,0.85);
-    }
-
-    body.light-mode .navbar .nav-link {
-      color: #222 !important;
-    }
-
-    body.light-mode .navbar .nav-link:hover {
-      color: var(--accent) !important;
-    }
-
-    body.light-mode .contact-section {
-      background: #f4f4f4;
-      color: #333;
-    }
-
-    body.light-mode footer {
-      background: #f1f1f1;
-      color: #444;
-    }
-
-    body.light-mode .cookie-bar {
-      background: #f0f0f0;
-      color: #222;
-      border-top: 1px solid #ccc;
-    }
-
-    /* 🌗 Toggle Button */
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--accent);
-      color: var(--bg-dark);
-      border: none;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,.3);
-      z-index: 9999;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .theme-toggle:hover { transform: scale(1.05); }
+    .theme-toggle:hover{ transform:scale(1.05); }
   </style>
 </head>
-
 <body>
-  <!-- ☀️🌙 Theme Toggle -->
+  <!-- Theme Toggle -->
   <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">☀️</button>
 
   <!-- Header -->
@@ -191,11 +118,11 @@
     <p class="fade-up">Assistenza legale professionale per le tue esigenze</p>
   </header>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Mostra menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -209,7 +136,7 @@
     </div>
   </nav>
 
-  <!-- Welcome Section -->
+  <!-- Welcome -->
   <section class="container text-center">
     <h2>Benvenuti nel nostro Studio Legale</h2>
     <p>Offriamo consulenza legale di alta qualità per soddisfare le tue esigenze.</p>
@@ -243,8 +170,8 @@
     </div>
   </div>
 
-  <!-- Contact Section -->
-  <section class="contact-section text-white py-4">
+  <!-- Contact -->
+  <section class="contact-section py-4">
     <div class="container">
       <h4 class="mb-4">Contatti</h4>
       <div class="row">
@@ -280,21 +207,17 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- 🌗 Theme Toggle Script -->
+  <!-- Theme Toggle -->
   <script>
-    const toggleButton = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Load theme preference
+    const btn = document.getElementById('theme-toggle');
     if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-mode');
-      toggleButton.textContent = '🌙';
+      document.body.classList.add('light-mode');
+      btn.textContent = '🌙';
     }
-
-    toggleButton.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-      const isLight = body.classList.contains('light-mode');
-      toggleButton.textContent = isLight ? '🌙' : '☀️';
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      btn.textContent = isLight ? '🌙' : '☀️';
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
   </script>

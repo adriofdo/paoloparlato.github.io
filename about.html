@@ -11,191 +11,114 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         referrerpolicy="no-referrer" />
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
-
   <style>
-    :root {
-      --bg-dark: #0b0f1a;
-      --bg-light: #141a29;
-      --accent: #c9a45b;
-      --text-light: #eaeef5;
-      --muted: #a0a7b9;
+    :root{
+      --bg-dark:#0b0f1a;
+      --bg-light:#141a29;
+      --accent:#c9a45b;
+      --text-light:#eaeef5;
+      --muted:#a0a7b9;
     }
 
     /* Light theme variables */
-    body.light-mode {
-      --bg-dark: #ffffff;
-      --bg-light: #f7f7fa;
-      --text-light: #1c1c1c;
-      --muted: #555;
-      --accent: #b68b40;
+    body.light-mode{
+      --bg-dark:#ffffff;
+      --bg-light:#f7f7fa;
+      --text-light:#1c1c1c;
+      --muted:#555;
+      --accent:#b68b40;
     }
 
-    body {
-      background: linear-gradient(180deg, var(--bg-dark), var(--bg-light));
-      color: var(--text-light);
-      font-family: 'Poppins', system-ui, sans-serif;
-      scroll-behavior: smooth;
-      transition: background 0.5s ease, color 0.5s ease;
+    body{
+      background:linear-gradient(180deg,var(--bg-dark),var(--bg-light));
+      color:var(--text-light);
+      font-family:'Poppins',system-ui,sans-serif;
+      scroll-behavior:smooth;
+      transition:background .5s ease,color .5s ease;
     }
 
-    header {
-      background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('home2.jpg') center/cover no-repeat;
-      text-align: center;
-      padding: 4rem 1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    header{
+      background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,.6)),url('home2.jpg') center/cover no-repeat;
+      text-align:center;
+      padding:4rem 1rem;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    header h1{font-weight:700; text-shadow:0 6px 25px rgba(0,0,0,.45);}
+
+    /* Navbar */
+    .navbar{
+      background:rgba(10,14,25,.8);
+      backdrop-filter:blur(8px);
+      transition:background .4s ease;
+    }
+    .navbar .nav-link{
+      color:var(--text-light)!important;
+      font-weight:500;
+      padding:.8rem 1rem;
+      transition:.2s;
+    }
+    .navbar .nav-link:hover{ color:var(--accent)!important; }
+
+    /* ✅ Hamburger icon (dark theme / white bars) */
+    .navbar-dark .navbar-toggler{ border-color:rgba(255,255,255,.5); }
+    .navbar-dark .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
 
-    header h1 {
-      font-weight: 700;
-      text-shadow: 0 6px 25px rgba(0,0,0,0.45);
+    /* Light mode navbar */
+    body.light-mode .navbar{ background:rgba(255,255,255,.85); }
+    body.light-mode .navbar .nav-link{ color:#1c1c1c!important; }
+    body.light-mode .navbar .nav-link:hover{ color:var(--accent)!important; }
+
+    /* ✅ Hamburger icon (light theme / black bars) */
+    body.light-mode .navbar-dark .navbar-toggler{ border-color:rgba(0,0,0,.4); }
+    body.light-mode .navbar-dark .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0,0,0,0.85)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
 
-    .navbar {
-      background: rgba(10,14,25,0.8);
-      backdrop-filter: blur(8px);
-      transition: background 0.4s ease;
-    }
-
-    body.light-mode .navbar {
-      background: rgba(255,255,255,0.85);
-    }
-
-    .navbar .nav-link {
-      color: var(--text-light) !important;
-      font-weight: 500;
-      padding: 0.8rem 1rem;
-      transition: all 0.2s ease;
-    }
-
-    .navbar .nav-link:hover {
-      color: var(--accent) !important;
-    }
-
-    .about-section {
-      padding: 4rem 0;
-    }
-
-    .about-section h2 {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .about-section p {
-      line-height: 1.7;
-    }
+    .about-section{ padding:4rem 0; }
+    .about-section h2{ color:var(--accent); font-weight:700; }
+    .about-section p{ line-height:1.7; }
 
     /* Icon circles */
-    .icon-circle {
-      width: 90px;
-      height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent);
-      color: #000;
-      border-radius: 50%;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .icon-circle{
+      width:90px; height:90px; display:flex; align-items:center; justify-content:center;
+      background:var(--accent); color:#000; border-radius:50%;
+      box-shadow:0 6px 25px rgba(0,0,0,.3); transition:transform .3s, box-shadow .3s;
     }
+    .icon-circle i{ font-size:2rem; color:#000; }
+    .icon-circle:hover{ transform:scale(1.08); box-shadow:0 10px 40px rgba(0,0,0,.4); }
 
-    .icon-circle i {
-      font-size: 2rem;
-      color: #000;
+    footer{
+      background:#090d14; border-top:1px solid rgba(255,255,255,.08);
+      padding:2rem 1rem 5rem; text-align:center; color:var(--muted); font-size:.9rem;
+      transition:background .5s ease;
     }
+    body.light-mode footer{ background:#e9e9ef; color:#555; }
+    footer a{ color:var(--accent); text-decoration:none; }
+    footer a:hover{ text-decoration:underline; }
 
-    .icon-circle:hover {
-      transform: scale(1.08);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    /* Cookie bar */
+    .cookie-bar{
+      position:fixed; left:0; bottom:0; width:100%;
+      background:#11141f; color:var(--text-light);
+      padding:.75rem 1rem; text-align:center; font-size:.9rem;
+      border-top:1px solid rgba(255,255,255,.1); z-index:9999;
     }
+    body.light-mode .cookie-bar{ background:#fafafa; color:#222; border-top:1px solid #ccc; }
+    .cookie-bar a{ color:var(--accent); text-decoration:underline; }
 
-    .contact-section {
-      background: linear-gradient(180deg, #121622, #0a0e17);
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
+    @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+    .fade-up{ opacity:0; animation:fadeUp .8s ease forwards; }
 
-    footer {
-      background: #090d14;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 2rem 1rem 5rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: background 0.5s ease;
+    /* Theme toggle btn */
+    .theme-toggle{
+      position:fixed; top:1rem; right:1rem; z-index:10000;
+      background:var(--accent); color:#000; border:none; border-radius:50%;
+      width:44px; height:44px; font-size:1.2rem; cursor:pointer;
+      box-shadow:0 2px 8px rgba(0,0,0,.3); transition:transform .2s;
     }
-
-    body.light-mode footer {
-      background: #e9e9ef;
-      color: #555;
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Cookie info bar */
-    .cookie-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #11141f;
-      color: var(--text-light);
-      padding: 0.75rem 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      z-index: 9999;
-    }
-
-    body.light-mode .cookie-bar {
-      background: #fafafa;
-      color: #222;
-      border-top: 1px solid #ccc;
-    }
-
-    .cookie-bar a {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    @keyframes fadeUp {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    .fade-up {
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    /* Theme toggle button */
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--accent);
-      color: #000;
-      border: none;
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,.3);
-      z-index: 10000;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.05);
-    }
+    .theme-toggle:hover{ transform:scale(1.05); }
   </style>
 </head>
 
@@ -209,7 +132,7 @@
     <h1 class="fade-up">STUDIO LEGALE PARLATO & PARTNERS</h1>
   </header>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -227,38 +150,34 @@
     </div>
   </nav>
 
-  <!-- About Section -->
+  <!-- About -->
   <div class="flex-grow-1">
     <section class="about-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="display-4 mb-4 fade-up">Chi Siamo</h2>
-            <p class="lead fade-up">Lo studio legale PARLATO & PARTNERS nasce nel 1954 grazie alla passione dell'AVV RENATO PARLATO a cui sono succeduti i suoi figli AVV LUCIO PARLATO e AVV PAOLO PARLATO. Da oltre 70 anni ci occupiamo di diritto civile, con un team di esperti che collabora con noi per garantire un'eccellente tutela su ogni tipo di controversia.</p>
+            <p class="lead fade-up">
+              Lo studio legale PARLATO & PARTNERS nasce nel 1954 grazie alla passione dell'AVV RENATO PARLATO a cui sono succeduti i suoi figli AVV LUCIO PARLATO e AVV PAOLO PARLATO. Da oltre 70 anni ci occupiamo di diritto civile, con un team di esperti che collabora con noi per garantire un'eccellente tutela su ogni tipo di controversia.
+            </p>
           </div>
         </div>
 
         <div class="row mt-5">
           <div class="col-md-4 text-center mb-4 fade-up">
-            <div class="icon-circle mx-auto mb-3">
-              <i class="fas fa-gavel"></i>
-            </div>
+            <div class="icon-circle mx-auto mb-3"><i class="fas fa-gavel"></i></div>
             <h4 class="mt-3">Consulenza Legale</h4>
             <p>Le competenze professionali del fondatore Avv. Renato Parlato estese su tutto il contenzioso civile hanno consentito ai successori coadiuvati dai preziosi collaboratori, di approfondire ciascuno per sé le competenze specifiche settoriali del diritto civile.</p>
           </div>
 
           <div class="col-md-4 text-center mb-4 fade-up">
-            <div class="icon-circle mx-auto mb-3">
-              <i class="fas fa-balance-scale"></i>
-            </div>
+            <div class="icon-circle mx-auto mb-3"><i class="fas fa-balance-scale"></i></div>
             <h4 class="mt-3">Tutela</h4>
             <p>Offriamo competenza legale in capo di diritto civile e procedura civile per tutelare il diritto di famiglia, il diritto successorio, il diritto di proprietà, contratti e obbligazioni, i diritti del lavoro, diritto societario, e diritto bancario.</p>
           </div>
 
           <div class="col-md-4 text-center mb-4 fade-up">
-            <div class="icon-circle mx-auto mb-3">
-              <i class="fas fa-shield-alt"></i>
-            </div>
+            <div class="icon-circle mx-auto mb-3"><i class="fas fa-shield-alt"></i></div>
             <h4 class="mt-3">Garanzie</h4>
             <p>Offriamo servizi di consulenza e assistenza legale durante il processo. Garantiamo ai nostri clienti massima trasparenza e miglior difesa contro qualsiasi tipo di pregiudizio civile.</p>
           </div>
@@ -273,36 +192,28 @@
     <p><a href="privacy.html">Informativa Privacy e Cookie</a></p>
   </footer>
 
-  <!-- Cookie Info Bar -->
+  <!-- Cookie bar -->
   <div class="cookie-bar">
     Questo sito non utilizza cookie né raccoglie dati personali.
     Consulta la <a href="privacy.html">Privacy Policy</a>.
   </div>
 
-  <!-- JS: Theme Toggle -->
+  <!-- Theme toggle script -->
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    const currentTheme = localStorage.getItem('theme');
-
-    if (currentTheme === 'light') {
+    if (localStorage.getItem('theme') === 'light') {
       document.body.classList.add('light-mode');
       toggleBtn.textContent = '🌙';
     }
-
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
-      let theme = 'dark';
-      if (document.body.classList.contains('light-mode')) {
-        theme = 'light';
-        toggleBtn.textContent = '🌙';
-      } else {
-        toggleBtn.textContent = '☀️';
-      }
-      localStorage.setItem('theme', theme);
+      const isLight = document.body.classList.contains('light-mode');
+      toggleBtn.textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
   </script>
 
-  <!-- Bootstrap Scripts -->
+  <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
