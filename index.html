@@ -1,151 +1,302 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Legale Parlato & Partners - Homepage</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Legale Parlato & Partners - Homepage</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    :root {
+      --bg-dark: #0b0f1a;
+      --bg-light: #141a29;
+      --accent: #c9a45b;
+      --text-light: #eaeef5;
+      --muted: #a0a7b9;
+    }
+
+    /* 🌙 Dark Theme */
+    body {
+      background: linear-gradient(180deg, var(--bg-dark), var(--bg-light));
+      color: var(--text-light);
+      font-family: 'Poppins', system-ui, sans-serif;
+      scroll-behavior: smooth;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('home1.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header h1 {
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-shadow: 0 6px 25px rgba(0,0,0,0.45);
+    }
+
+    .navbar {
+      background: rgba(10,14,25,0.8);
+      backdrop-filter: blur(8px);
+      transition: background 0.3s ease;
+    }
+
+    .navbar .nav-link {
+      color: var(--text-light) !important;
+      font-weight: 500;
+      padding: 0.8rem 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .navbar .nav-link:hover {
+      color: var(--accent) !important;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .carousel-item img {
+      object-fit: cover;
+      height: 60vh;
+      border-radius: 6px;
+    }
+
+    .contact-section {
+      background: linear-gradient(180deg, #121622, #0a0e17);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer {
+      background: #090d14;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem 1rem 5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 🍪 Cookie info bar */
+    .cookie-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #11141f;
+      color: var(--text-light);
+      padding: 0.75rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      z-index: 9999;
+      transition: background 0.3s ease;
+    }
+
+    .cookie-bar a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    /* ✨ Fade-up animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    /* ☀️ Light Mode Overrides */
+    body.light-mode {
+      background: linear-gradient(180deg, #f9f9fb, #ffffff);
+      color: #222;
+    }
+
+    body.light-mode header {
+      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.7)), url('home1.jpg') center/cover no-repeat;
+      color: #000;
+    }
+
+    body.light-mode .navbar {
+      background: rgba(255,255,255,0.85);
+    }
+
+    body.light-mode .navbar .nav-link {
+      color: #222 !important;
+    }
+
+    body.light-mode .navbar .nav-link:hover {
+      color: var(--accent) !important;
+    }
+
+    body.light-mode .contact-section {
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    body.light-mode footer {
+      background: #f1f1f1;
+      color: #444;
+    }
+
+    body.light-mode .cookie-bar {
+      background: #f0f0f0;
+      color: #222;
+      border-top: 1px solid #ccc;
+    }
+
+    /* 🌗 Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: var(--bg-dark);
+      border: none;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+      z-index: 9999;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .theme-toggle:hover { transform: scale(1.05); }
+  </style>
 </head>
+
 <body>
+  <!-- ☀️🌙 Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">☀️</button>
 
-    <!-- Theme Toggle -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">☀️</button>
+  <!-- Header -->
+  <header>
+    <h1 class="fade-up">STUDIO LEGALE PARLATO & PARTNERS</h1>
+    <p class="fade-up">Assistenza legale professionale per le tue esigenze</p>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <h1 class="fade-up">STUDIO LEGALE PARLATO & PARTNERS</h1>
-        <p class="fade-up">Assistenza legale professionale per le tue esigenze</p>
-    </header>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active"><a class="nav-link h5" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link h5" href="about.html">Chi Siamo</a></li>
-                    <li class="nav-item"><a class="nav-link h5" href="services.html">Servizi</a></li>
-                    <li class="nav-item"><a class="nav-link h5" href="team.html">Il Nostro Team</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Welcome Section -->
-    <section class="container text-center">
-        <h2>Benvenuti nel nostro Studio Legale</h2>
-        <p>Offriamo consulenza legale di alta qualità per soddisfare le tue esigenze.</p>
-    </section>
-
-    <!-- Carousel -->
-    <div class="container pb-5">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="3000">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner text-center">
-                <div class="carousel-item active">
-                    <img src="home1.jpg" class="d-block mx-auto w-100" alt="Studio Legale Parlato">
-                </div>
-                <div class="carousel-item">
-                    <img src="home2.jpg" class="d-block mx-auto w-100" alt="Consulenza legale">
-                </div>
-                <div class="carousel-item">
-                    <img src="home3.jpg" class="d-block mx-auto w-100" alt="Assistenza giudiziaria">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </a>
-        </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active"><a class="nav-link h5" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link h5" href="about.html">Chi Siamo</a></li>
+          <li class="nav-item"><a class="nav-link h5" href="services.html">Servizi</a></li>
+          <li class="nav-item"><a class="nav-link h5" href="team.html">Il Nostro Team</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Contact Information -->
-    <section class="contact-section text-white py-4">
-        <div class="container">
-            <h4 class="mb-4">Contatti</h4>
-            <div class="row">
-                <div class="col-md-4"><p><strong>Email:</strong> studioparlato@libero.it</p></div>
-                <div class="col-md-4"><p><strong>Telefono:</strong> +39 081401112</p></div>
-                <div class="col-md-4"><p><strong>Fax:</strong> +39 081413282</p></div>
-                <div class="col-md-4"><p><strong>Instagram:</strong> @studio_legale_parlato</p></div>
-                <div class="col-md-8">
-                    <p><strong>Indirizzo:</strong>
-                        <a href="https://www.google.com/maps/place/Via+Toledo,+256,+80132+Napoli+NA" target="_blank">
-                            Via Toledo 256 - 80132 NAPOLI - PALAZZO BERIO, PIANO 1°, SCALA A
-                        </a>
-                    </p>
-                </div>
-            </div>
+  <!-- Welcome Section -->
+  <section class="container text-center">
+    <h2>Benvenuti nel nostro Studio Legale</h2>
+    <p>Offriamo consulenza legale di alta qualità per soddisfare le tue esigenze.</p>
+  </section>
+
+  <!-- Carousel -->
+  <div class="container pb-5">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="3000">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner text-center">
+        <div class="carousel-item active">
+          <img src="home1.jpg" class="d-block mx-auto w-100" alt="Studio Legale Parlato">
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 PARLATO & PARTNERS. Tutti i diritti riservati.</p>
-        <p><a href="privacy.html">Informativa Privacy e Cookie</a></p>
-    </footer>
-
-    <!-- Cookie Info Bar -->
-    <div class="cookie-bar">
-        Questo sito non utilizza cookie né raccoglie dati personali. 
-        Consulta la <a href="privacy.html">Privacy Policy</a>.
+        <div class="carousel-item">
+          <img src="home2.jpg" class="d-block mx-auto w-100" alt="Consulenza legale">
+        </div>
+        <div class="carousel-item">
+          <img src="home3.jpg" class="d-block mx-auto w-100" alt="Assistenza giudiziaria">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </a>
     </div>
+  </div>
 
-    <!-- Bootstrap Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Contact Section -->
+  <section class="contact-section text-white py-4">
+    <div class="container">
+      <h4 class="mb-4">Contatti</h4>
+      <div class="row">
+        <div class="col-md-4"><p><strong>Email:</strong> studioparlato@libero.it</p></div>
+        <div class="col-md-4"><p><strong>Telefono:</strong> +39 081401112</p></div>
+        <div class="col-md-4"><p><strong>Fax:</strong> +39 081413282</p></div>
+        <div class="col-md-4"><p><strong>Instagram:</strong> @studio_legale_parlato</p></div>
+        <div class="col-md-8">
+          <p><strong>Indirizzo:</strong>
+            <a href="https://www.google.com/maps/place/Via+Toledo,+256,+80132+Napoli+NA" target="_blank">
+              Via Toledo 256 - 80132 NAPOLI - PALAZZO BERIO, PIANO 1°, SCALA A
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Theme Toggle Script -->
-    <script>
-        const toggleButton = document.getElementById('theme-toggle');
-        const body = document.body;
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 PARLATO & PARTNERS. Tutti i diritti riservati.</p>
+    <p><a href="privacy.html">Informativa Privacy e Cookie</a></p>
+  </footer>
 
-        // Load saved theme from localStorage
-        if (localStorage.getItem('theme') === 'light') {
-            body.classList.add('light-mode');
-            toggleButton.textContent = '🌙';
-        }
+  <!-- Cookie Bar -->
+  <div class="cookie-bar">
+    Questo sito non utilizza cookie né raccoglie dati personali.
+    Consulta la <a href="privacy.html">Privacy Policy</a>.
+  </div>
 
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            const isLight = body.classList.contains('light-mode');
-            toggleButton.textContent = isLight ? '🌙' : '☀️';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        });
-    </script>
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <style>
-        /* Small floating theme toggle button */
-        .theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent);
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 50%;
-            width: 42px;
-            height: 42px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,.3);
-            z-index: 9999;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .theme-toggle:hover { transform: scale(1.05); }
-    </style>
+  <!-- 🌗 Theme Toggle Script -->
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
 
+    // Load theme preference
+    if (localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-mode');
+      toggleButton.textContent = '🌙';
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const isLight = body.classList.contains('light-mode');
+      toggleButton.textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
